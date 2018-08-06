@@ -1,0 +1,26 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <!-- When the button is clicked the data is been passed from child component to parent component -->
+  <div *ngIf="clickedPersonData">
+    <h2>Clicked Person detail</h2>
+    <h3>
+      <label for="name">Name:</label>
+      <span>{{ clickedPersonData.clickedName}}</span>
+    </h3>
+    <h3>
+      <label for="city">City:</label>
+      <span>{{clickedPersonData.clickedCity}}</span>
+    </h3>
+    <h3>
+      <label for="state">State:</label>
+      <span>{{clickedPersonData.clickedState}}</span>
+    </h3>
+  </div>
+  <h2>Persons detail</h2>
+  <!-- This child component is getting the data from parent component -->
+  <app-child [name]="person.name" [city]="person.city" [cPersonState]="person.state" (sendPersonDetails)="getPersonDetails($event)"
+    *ngFor='let person of persons'>The Person details will be displayed here.</app-child>
+</div>
